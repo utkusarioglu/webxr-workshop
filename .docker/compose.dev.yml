@@ -1,0 +1,9 @@
+services:
+  webxr-workshop:
+    image: utkusarioglu/react-native-android-devcontainer:35-23-ubuntu-test-24
+    ports:
+      - "3000:3000"
+    volumes:
+      - source: ..
+        target: /utkusarioglu-com/webxr-workshop
+        type: bind

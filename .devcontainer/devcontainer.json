@@ -1,0 +1,23 @@
+{
+  "name": "com.utkusarioglu.webxr-workshop",
+  "dockerComposeFile": [
+    "./compose.devcontainer.yml",
+    "../.docker/compose.dev.yml"
+  ],
+  "service": "webxr-workshop",
+  "workspaceFolder": "/utkusarioglu-com/webxr-workshop",
+  "shutdownAction": "stopCompose",
+  "postCreateCommand": "scripts/post-create-command.sh",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "workbench.colorCustomizations": {
+          "activityBar.background": "#445533",
+          "activityBar.foreground": "#FFFFFF"
+        },
+        "remote.autoForwardPorts": false
+      },
+      "extensions": ["esbenp.prettier-vscode"]
+    }
+  }
+}

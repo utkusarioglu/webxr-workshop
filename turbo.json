@@ -1,0 +1,17 @@
+{
+  "tasks": {
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist"],
+      "inputs": [".", "!README.md"]
+    },
+    "preview": {
+      "inputs": ["dist"],
+      "persistent": true
+    }
+  }
+}
