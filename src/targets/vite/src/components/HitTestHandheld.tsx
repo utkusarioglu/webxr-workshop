@@ -1,7 +1,7 @@
 import { useXRHitTest } from "@react-three/xr";
 
 import { Reticle } from "./Reticle";
-import { onResults } from "../App";
+import { onResults } from "../xr-store";
 
 const HitTestHandheld = () => {
   useXRHitTest(onResults.bind(null, "none"), "viewer");

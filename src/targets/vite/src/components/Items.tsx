@@ -3,8 +3,7 @@ import { useState } from "react";
 import type { FC } from "react";
 
 import { Quaternion, Vector3 } from "three";
-// import { Duck } from "./Duck";
-import { hitTestMatrices } from "../App";
+import { hitTestMatrices } from "../xr-store";
 
 const vectorHelper = new Vector3();
 
@@ -28,7 +27,7 @@ export const Items: FC<ItemsProps> = ({ Component }) => {
         const quaternion = new Quaternion();
 
         matrix.decompose(position, quaternion, vectorHelper);
-        setItems((ducks) => [...ducks, { position, quaternion }]);
+        setItems((i) => [...i, { position, quaternion }]);
       }
     },
 

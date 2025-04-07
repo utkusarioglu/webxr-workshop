@@ -7,7 +7,8 @@ export default defineConfig({
   plugins: [
     react(),
     basicSsl({
-      domains: ["192.168.1.151"],
+      name: "u-schumann.dev",
+      domains: ["u-schumann.dev"],
     }),
   ],
   server: {
@@ -24,24 +25,4 @@ export default defineConfig({
       },
     },
   },
-  // optimizeDeps: {
-  //   include: ["three"],
-  //   //   // exclude: ["zustand", "three", "@bufbuild/protobuf"],
-  // },
-  // build: {
-  //   rollupOptions: {
-  //     external: [
-  //       "three",
-  //       "zustand",
-  //       "@bufbuild/protobuf/wire",
-  //       "three/src/math/MathUtils.js",
-  //     ],
-  //   },
-  // },
-  // resolve: {
-  //   alias: {
-  //     "use-sync-external-store/shim/with-selector.js":
-  //       "use-sync-external-store/shim/with-selector",
-  //   },
-  // },
 });

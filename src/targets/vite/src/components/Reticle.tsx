@@ -2,7 +2,7 @@ import { ThreeElements, useFrame } from "@react-three/fiber";
 import { forwardRef, memo, useRef } from "react";
 import * as THREE from "three";
 import { BufferGeometryUtils } from "three/examples/jsm/Addons.js";
-import { hitTestMatrices } from "../App";
+import { hitTestMatrices } from "../xr-store";
 import { Mesh } from "three";
 
 const ReticleMesh = forwardRef<Mesh, ThreeElements["mesh"]>((props, ref) => {
