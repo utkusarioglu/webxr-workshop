@@ -8,7 +8,7 @@ type SpotWithHelperProps = Parameters<typeof SpotLight>[0];
 export const SpotWithHelper: FC<SpotWithHelperProps> = (props) => {
   const spotRef = useRef<Object3D<Object3DEventMap>>(null);
   // @ts-expect-error ref type null issue
-  const helper = useHelper(spotRef, SpotLightHelper, "red");
+  const helper = useHelper(spotRef, SpotLightHelper, props.color);
   return (
     <spotLight
       ref={spotRef}

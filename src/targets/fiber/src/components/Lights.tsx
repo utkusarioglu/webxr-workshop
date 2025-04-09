@@ -1,85 +1,134 @@
-import { useControls, folder } from "leva";
-import { sceneConstants } from "../constants";
-import { SpotWithHelper } from "./SpotWithHelper";
-import { SpotLight } from "@react-three/drei";
-import { FC } from "react";
+import { Reducer, useMemo, useReducer } from "react";
+import { CustomSpotLight } from "./CustomSpotLight";
+import { folder, useControls } from "leva";
+import { getColors, getPosition } from "../hooks/spot-light-values";
 
-type CustomSpotLightProps = Parameters<typeof SpotLight>[0] & {
+interface LightMetaState {
+  count: number;
   showHelper: boolean;
+  rotation: number;
+  spread: number;
+  altitude: number;
+}
+
+const LIGHT_META_INITIAL_STATE: LightMetaState = {
+  count: 3,
+  showHelper: false,
+  rotation: 0,
+  spread: 4,
+  altitude: 10,
 };
 
-const CustomSpotLight: FC<CustomSpotLightProps> = ({
-  showHelper,
-  position,
-  color,
-  penumbra,
-  angle,
-  intensity,
-}) => {
-  return (
-    <>
-      {showHelper ? (
-        <SpotWithHelper
-          castShadow
-          penumbra={penumbra}
-          angle={angle}
-          intensity={intensity}
-          color={color}
-          position={position}
-        />
-      ) : (
-        <spotLight
-          castShadow
-          penumbra={penumbra}
-          angle={angle}
-          intensity={intensity}
-          color={color}
-          position={position}
-        />
-      )}
-    </>
-  );
+type Actions =
+  | ActionType<"count">
+  | ActionType<"showHelper">
+  | ActionType<"rotation">
+  | ActionType<"spread">
+  | ActionType<"altitude">;
+
+type ActionType<T> = T extends keyof LightMetaState
+  ? {
+      type: T;
+      payload: LightMetaState[T];
+    }
+  : never;
+
+const lightMetaReducer: Reducer<LightMetaState, Actions> = (
+  state,
+  { type, payload }
+) => {
+  switch (type) {
+    case "count":
+      return {
+        ...state,
+        count: payload,
+      };
+    case "showHelper":
+      return {
+        ...state,
+        showHelper: payload,
+      };
+    case "rotation":
+      return {
+        ...state,
+        rotation: payload,
+      };
+    case "spread":
+      return {
+        ...state,
+        spread: payload,
+      };
+    case "altitude":
+      return {
+        ...state,
+        altitude: payload,
+      };
+    default:
+      return state;
+  }
 };
 
 export const Lights = () => {
-  const light = useControls("Light", {
-    Spot1: folder(sceneConstants.light.spot1),
-    Spot2: folder(sceneConstants.light.spot2),
-    Ambient: folder(sceneConstants.light.ambient),
+  const [state, dispatch] = useReducer(
+    lightMetaReducer,
+    LIGHT_META_INITIAL_STATE
+  );
+
+  useControls("Light", {
+    Meta: folder({
+      count: {
+        value: state.count,
+        min: 0,
+        max: 7,
+        step: 1,
+        onChange: (payload) => dispatch({ type: "count", payload }),
+      },
+      showHelper: {
+        value: state.showHelper,
+        onChange: (payload) => dispatch({ type: "showHelper", payload }),
+      },
+      rotation: {
+        value: state.rotation,
+        onChange: (payload) => dispatch({ type: "rotation", payload }),
+      },
+      spread: {
+        value: state.spread,
+        onChange: (payload) => dispatch({ type: "spread", payload }),
+      },
+      altitude: {
+        value: state.altitude,
+        onChange: (payload) => dispatch({ type: "altitude", payload }),
+      },
+    }),
   });
+
+  const colors = useMemo(() => getColors(state.count), [state.count]);
+  // const positions = useMemo(() => getPosition)
 
   return (
     <>
-      <ambientLight
-        color={light.ambientColor}
-        intensity={light.ambientIntensity}
-      />
-      <CustomSpotLight
-        showHelper={light.spot1Helper}
-        castShadow
-        penumbra={light.spot1Penumbra}
-        angle={light.spot1ConeAngle}
-        intensity={light.spot1Intensity}
-        color={light.spot1Color}
-        position={[
-          light.spot1Position.x,
-          light.spot1Position.y,
-          light.spot1Position.z,
-        ]}
-      />
-      <CustomSpotLight
-        showHelper={light.spot2Helper}
-        castShadow
-        penumbra={light.spot2Penumbra}
-        angle={light.spot2ConeAngle}
-        intensity={light.spot2Intensity}
-        color={light.spot2Color}
-        position={[
-          light.spot2Position.x,
-          light.spot2Position.y,
-          light.spot2Position.z,
-        ]}
-      />
+      {Array(state.count)
+        .fill(null)
+        .map((_, i) => (
+          <CustomSpotLight
+            key={colors[i]}
+            index={i}
+            position={getPosition(
+              state.altitude,
+              state.spread,
+              state.rotation,
+              state.count,
+              i
+            )}
+            // index,
+            showHelper={state.showHelper}
+            penumbra={1}
+            angle={0.45}
+            intensity={255}
+            color={colors[i]}
+            // {...props}
+          />
+        ))}
     </>
   );
 };
