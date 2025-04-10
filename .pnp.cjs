@@ -4912,7 +4912,8 @@ const RAW_RUNTIME_STATE =
           ["three", "npm:0.175.0"],\
           ["typescript", "patch:typescript@npm%3A5.7.3#optional!builtin<compat/typescript>::version=5.7.3&hash=5786d5"],\
           ["typescript-eslint", "virtual:6e468c8867f4f2313704500c7fdbcce5c7287beef284045632a69ead8ad0487f19a81570697fe57e2abcde604ffcfa1e664877da1d9ed51190bdc8e4c30ac6e3#npm:8.25.0"],\
-          ["vite", "virtual:6e468c8867f4f2313704500c7fdbcce5c7287beef284045632a69ead8ad0487f19a81570697fe57e2abcde604ffcfa1e664877da1d9ed51190bdc8e4c30ac6e3#npm:6.2.0"]\
+          ["vite", "virtual:6e468c8867f4f2313704500c7fdbcce5c7287beef284045632a69ead8ad0487f19a81570697fe57e2abcde604ffcfa1e664877da1d9ed51190bdc8e4c30ac6e3#npm:6.2.0"],\
+          ["zustand", "virtual:6e468c8867f4f2313704500c7fdbcce5c7287beef284045632a69ead8ad0487f19a81570697fe57e2abcde604ffcfa1e664877da1d9ed51190bdc8e4c30ac6e3#npm:5.0.3"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -9058,6 +9059,27 @@ const RAW_RUNTIME_STATE =
           "@types/react",\
           "immer",\
           "react"\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["virtual:6e468c8867f4f2313704500c7fdbcce5c7287beef284045632a69ead8ad0487f19a81570697fe57e2abcde604ffcfa1e664877da1d9ed51190bdc8e4c30ac6e3#npm:5.0.3", {\
+        "packageLocation": "./.yarn/__virtual__/zustand-virtual-8498123435/3/home/dev/.yarn/berry/cache/zustand-npm-5.0.3-6b60927ae4-10c0.zip/node_modules/zustand/",\
+        "packageDependencies": [\
+          ["zustand", "virtual:6e468c8867f4f2313704500c7fdbcce5c7287beef284045632a69ead8ad0487f19a81570697fe57e2abcde604ffcfa1e664877da1d9ed51190bdc8e4c30ac6e3#npm:5.0.3"],\
+          ["@types/immer", null],\
+          ["@types/react", "npm:19.0.10"],\
+          ["@types/use-sync-external-store", null],\
+          ["immer", null],\
+          ["react", "npm:19.0.0"],\
+          ["use-sync-external-store", null]\
+        ],\
+        "packagePeers": [\
+          "@types/immer",\
+          "@types/react",\
+          "@types/use-sync-external-store",\
+          "immer",\
+          "react",\
+          "use-sync-external-store"\
         ],\
         "linkType": "HARD"\
       }],\

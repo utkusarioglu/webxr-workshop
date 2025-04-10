@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { SpotWithHelper } from "./SpotWithHelper";
 import { folder, useControls } from "leva";
+import { useLightMetaStore } from "../store";
 
 export type CustomSpotLightProps = {
   index: number;
@@ -14,33 +15,46 @@ export type CustomSpotLightProps = {
 
 export const CustomSpotLight: FC<CustomSpotLightProps> = ({
   index,
-  showHelper,
-  penumbra,
-  angle,
-  intensity,
-  color,
-  position,
+  // showHelper,
+  // angle,
+  // color,
 }) => {
-  const light = useControls("Lights", {
-    [`Spot ${index + 1}`]: folder(
+  const state = useLightMetaStore();
+  // const spot = useLightMetaStore((state) => state.spots[index]);
+  const spot = state.spots[index];
+
+  useControls("Lights", {
+    [spot.key]: folder(
       {
-        showHelper,
-        color,
+        showHelper: {
+          value: spot.showHelper,
+          onChange: state.setSpotShowHelper(index),
+        },
+        color: {
+          value: spot.color,
+          onChange: state.setSpotColor(index),
+        },
         penumbra: {
-          value: penumbra,
+          value: spot.penumbra,
+          onChange: state.setSpotPenumbra(index),
           min: -2,
           max: 2,
           step: 0.1,
         },
-        angle,
+        angle: {
+          value: spot.angle,
+          onChange: state.setSpotAngle(index),
+        },
         intensity: {
-          value: intensity,
+          value: spot.intensity,
+          onChange: state.setSpotIntensity(index),
           min: 0,
           max: 255,
           step: 1,
         },
         position: {
-          value: position,
+          value: spot.position,
+          onChange: state.setSpotPosition(index),
           min: 0,
           max: 20,
           step: 0.5,
@@ -52,23 +66,23 @@ export const CustomSpotLight: FC<CustomSpotLightProps> = ({
 
   return (
     <>
-      {showHelper ? (
+      {spot.showHelper ? (
         <SpotWithHelper
           castShadow
-          penumbra={light.penumbra}
-          angle={light.angle}
-          intensity={light.intensity}
-          color={light.color}
-          position={light.position}
+          penumbra={spot.penumbra}
+          angle={spot.angle}
+          intensity={spot.intensity}
+          color={spot.color}
+          position={spot.position}
         />
       ) : (
         <spotLight
           castShadow
-          penumbra={light.penumbra}
-          angle={light.angle}
-          intensity={light.intensity}
-          color={light.color}
-          position={light.position}
+          penumbra={spot.penumbra}
+          angle={spot.angle}
+          intensity={spot.intensity}
+          color={spot.color}
+          position={spot.position}
         />
       )}
     </>
