@@ -13,14 +13,8 @@ export type CustomSpotLightProps = {
   intensity: number;
 };
 
-export const CustomSpotLight: FC<CustomSpotLightProps> = ({
-  index,
-  // showHelper,
-  // angle,
-  // color,
-}) => {
+export const CustomSpotLight: FC<CustomSpotLightProps> = ({ index }) => {
   const state = useLightMetaStore();
-  // const spot = useLightMetaStore((state) => state.spots[index]);
   const spot = state.spots[index];
 
   useControls("Lights", {
@@ -37,8 +31,8 @@ export const CustomSpotLight: FC<CustomSpotLightProps> = ({
         penumbra: {
           value: spot.penumbra,
           onChange: state.setSpotPenumbra(index),
-          min: -2,
-          max: 2,
+          min: -1e-2,
+          max: 1,
           step: 0.1,
         },
         angle: {

@@ -11,6 +11,7 @@ export const Lights = () => {
         min: 0,
         max: 7,
         step: 1,
+
         onChange: state.setCount,
       },
       showHelper: {
@@ -24,21 +25,26 @@ export const Lights = () => {
       spread: {
         value: state.spread,
         onChange: state.setSpread,
+        min: 0,
+        max: 20,
+        steps: 0.5,
       },
       altitude: {
         value: state.altitude,
         onChange: state.setAltitude,
+        min: 0,
+        max: 20,
+        steps: 0.5,
+      },
+      angle: {
+        value: state.angle,
+        onChange: state.setAngle,
+        min: 0,
+        max: 1,
+        steps: 1e-2,
       },
     }),
   });
-
-  // const colors = useMemo(() => getColors(state.count), [state.count]);
-  // const positions = getPositions(
-  //   state.altitude,
-  //   state.spread,
-  //   state.rotation,
-  //   state.count
-  // );
 
   return (
     <>

@@ -10,9 +10,13 @@ export const groundConstants = {
 export const boxConstants = {
   color: "#FFFFFF",
   dimensions: {
-    x: 3,
-    y: 3,
-    z: 3,
+    value: {
+      x: 3,
+      y: 3,
+      z: 3,
+    },
+    min: 1e-2,
+    max: 10,
   },
 };
 
