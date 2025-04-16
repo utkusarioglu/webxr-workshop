@@ -1,9 +1,26 @@
 import { useControls } from "leva";
-import { groundConstants } from "../constants";
+import { FC } from "react";
+// import { groundConstants } from "../constants";
 // import { Grid } from "@react-three/drei";
 
+const components: Record<string, FC> = {
+  Circle: () => <circleGeometry args={[200, 100]} />,
+  Square: () => <planeGeometry args={[1e4, 1e4]} />,
+};
+
 export const Plane = () => {
-  const { altitude } = useControls("Ground", groundConstants);
+  const { altitude, shape } = useControls("Ground", {
+    shape: {
+      options: ["Square", "Circle"],
+      value: "Circle",
+    },
+    altitude: {
+      value: 3,
+      min: 0,
+      max: 10,
+      steps: 0.1,
+    },
+  });
 
   // return (
   //   <Grid
@@ -17,13 +34,15 @@ export const Plane = () => {
   //   />
   // );
 
+  const Component = components[shape];
+
   return (
     <mesh
       receiveShadow
       rotation={[-Math.PI / 2, 0, 0]}
       position={[0, -altitude, 0]}
     >
-      <planeGeometry args={[1e4, 1e4]} />
+      <Component />
       <meshStandardMaterial color="#FFFFFF" />
     </mesh>
   );

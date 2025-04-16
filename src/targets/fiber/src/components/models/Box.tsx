@@ -1,19 +1,18 @@
 import { useControls } from "leva";
-import { type RefObject, type FC, useState } from "react";
-import { Mesh } from "three";
-import { boxConstants } from "../constants";
+import { useState } from "react";
+import type { FC } from "react";
+import { boxConstants } from "../../constants";
+import type { ModelComponentProps } from "../BoxScene";
 
-interface BoxProps {
-  ref: RefObject<Mesh | null>;
-}
-
-export const Box: FC<BoxProps> = ({ ref }) => {
+export const Box: FC<ModelComponentProps> = ({ ref, position, scale }) => {
   const [wireframe, setWireframe] = useState(false);
   const { color, dimensions } = useControls("Box", boxConstants);
 
   return (
     <mesh
       castShadow
+      position={position}
+      scale={scale}
       ref={ref}
       onDoubleClick={() => setWireframe((s) => !s)}
     >

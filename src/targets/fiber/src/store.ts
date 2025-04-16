@@ -135,7 +135,7 @@ interface LightMetaState {
 }
 
 export const useLightMetaStore = create<LightMetaState>()((set) => ({
-  count: 1,
+  count: 3,
   showHelper: false,
   rotation: 0,
   spread: 4,
