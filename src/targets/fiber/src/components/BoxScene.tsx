@@ -17,6 +17,7 @@ import { Vector3 } from "three";
 import { Background, Skydome } from "./Background";
 import { SkydomeLight } from "./SkydomeLight";
 import { SkydomeCamera } from "./SkydomeCamera";
+import { AudioComponent } from "./Audio";
 
 interface RegisteredModel {
   // TODO: any
@@ -76,6 +77,7 @@ export const BoxScene = () => {
     <>
       {/* <Background /> */}
 
+      {/* <AudioComponent /> */}
       <Skydome />
       {/* <SkydomeLight /> */}
       <selected.model
