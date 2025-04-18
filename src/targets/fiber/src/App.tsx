@@ -4,6 +4,19 @@ import "./App.css";
 import { BoxScene } from "./components/BoxScene";
 import { Leva } from "leva";
 import * as THREE from "three";
+// import { useScore } from "./hooks/useScore";
+
+// const MUSIC_LIST = ["3-notes", "bach", "test", "debussy", "aa"];
+
+// function App_() {
+//   const music = useScore(`/music/${MUSIC_LIST[0]}.musicxml`);
+//   return (
+//     <div
+//       className="aa"
+//       dangerouslySetInnerHTML={{ __html: music }}
+//     />
+//   );
+// }
 
 function App() {
   return (

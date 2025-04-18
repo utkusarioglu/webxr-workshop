@@ -18,6 +18,7 @@ import { Background, Skydome } from "./Background";
 import { SkydomeLight } from "./SkydomeLight";
 import { SkydomeCamera } from "./SkydomeCamera";
 import { AudioComponent } from "./Audio";
+import { Score } from "./models/Score";
 
 interface RegisteredModel {
   // TODO: any
@@ -29,6 +30,13 @@ interface RegisteredModel {
 }
 
 const models: Record<string, RegisteredModel> = {
+  Score: {
+    model: Score,
+    initial: {
+      scale: new Vector3(3, 3, 3),
+      position: new Vector3(0, 0, 0),
+    },
+  },
   "Cat Sphere": {
     model: CatSphere,
     initial: {

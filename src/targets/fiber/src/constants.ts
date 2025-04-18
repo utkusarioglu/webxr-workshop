@@ -23,8 +23,8 @@ export const boxConstants = {
 export const sceneConstants = {
   model: {
     model: {
-      options: ["Box", "House", "Cat Sphere", "Cat Box"],
-      value: "Cat Box",
+      options: ["Score", "Box", "House", "Cat Sphere", "Cat Box"],
+      value: "Score",
     },
     scale: {
       value: 1,
