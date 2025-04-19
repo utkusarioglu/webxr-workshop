@@ -1,0 +1,79 @@
+score-partwise:
+  '@version': '4.0'
+  defaults:
+    scaling:
+      millimeters: '7'
+      tenths: '40'
+  identification:
+    creator:
+      '#text': Music21
+      '@type': composer
+    encoding:
+      encoding-date: '2025-04-19'
+      software: music21 v.9.1.0
+  movement-title: Music21 Fragment
+  part:
+    '@id': P738ea2eb4242c5a054bc041acc0c52f5
+    measure:
+      '@implicit': 'no'
+      '@number': '0'
+      attributes:
+        divisions: '10080'
+        key:
+          fifths: '1'
+        time:
+          beat-type: '4'
+          beats: '3'
+      note:
+      - duration: '10080'
+        pitch:
+          octave: '4'
+          step: C
+        type: quarter
+      - chord: null
+        duration: '10080'
+        pitch:
+          octave: '4'
+          step: E
+        type: quarter
+      - chord: null
+        duration: '10080'
+        pitch:
+          octave: '4'
+          step: G
+        type: quarter
+      - duration: '10080'
+        pitch:
+          octave: '4'
+          step: C
+        type: quarter
+      - duration: '10080'
+        pitch:
+          octave: '4'
+          step: E
+        type: quarter
+      - accidental: natural
+        duration: '10080'
+        pitch:
+          alter: '0'
+          octave: '4'
+          step: F
+        type: quarter
+      - duration: '10080'
+        pitch:
+          octave: '4'
+          step: B
+        type: quarter
+  part-list:
+    score-part:
+      '@id': P738ea2eb4242c5a054bc041acc0c52f5
+      midi-instrument:
+        '@id': I96436a7ce79ee151c40e85c5c0164c38
+        midi-channel: '1'
+        midi-program: '1'
+      part-abbreviation: Pno
+      part-name: Piano
+      score-instrument:
+        '@id': I96436a7ce79ee151c40e85c5c0164c38
+        instrument-abbreviation: Pno
+        instrument-name: Piano

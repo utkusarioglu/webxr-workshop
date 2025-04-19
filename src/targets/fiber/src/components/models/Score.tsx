@@ -3,13 +3,11 @@ import { useScore } from "../../hooks/useScore";
 
 export const Score = () => {
   const WIDTH = 200;
-  const HEIGHT = 100;
-  const musicSvg = useScore("/music/3-notes.musicxml", {
+  const HEIGHT = 150;
+  const musicSvg = useScore("/music/example.musicxml.yaml", {
     width: WIDTH,
     height: HEIGHT,
   });
-
-  console.log(musicSvg);
 
   return (
     <mesh castShadow>
